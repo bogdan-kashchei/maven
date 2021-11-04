@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace App;
 
@@ -6,11 +7,12 @@ Use App\User;
 
 class SuperUser extends User
 {
-    private $superPower;
+//    private $superPower;
 
     public function __construct(string $name, int $age, string $superPower)
     {
         $this->superPower = $superPower;
+        var_dump($superPower);
         parent::__construct($name, $age);
     }
 
