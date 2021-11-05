@@ -5,13 +5,13 @@ namespace App\Controller;
 
 use App\View\View;
 use App\Services\Db;
+use App\Models\Articles\Article;
 
 /**
  *
  */
 class MainController
 {
-
     /**
      * @var View
      */
@@ -26,7 +26,7 @@ class MainController
     public function __construct()
     {
         $this->view = new View(__DIR__ . '/../../templates');
-        $this->db = new Db();
+        $db = Db::getInstance();
     }
 
     /**
@@ -34,7 +34,7 @@ class MainController
      */
     public function main()
     {
-        $articles = $this->db->query('SELECT * FROM `articles`;');
+        $articles = Article::findAll();
         $this->view->renderHtml('main/main.php', ['articles' => $articles]);
     }
 
@@ -43,6 +43,7 @@ class MainController
      */
     public function sayHello(string $name)
     {
+        var_dump($name);
         echo 'Привет, ' . $name;
     }
 }

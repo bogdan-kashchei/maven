@@ -2,6 +2,7 @@
 require_once '../vendor/autoload.php';
 ini_set('display_errors', 1);
 
+
 use App\Controller\MainController;
 use App\Controller\ArticlesController;
 use App\User;
@@ -35,8 +36,13 @@ if (!$isRouteFound) {
 
 unset($matches[0]);
 
+
 $controllerName = $controllerAndAction[0];
 $actionName = $controllerAndAction[1];
 
+var_dump($actionName);
+var_dump($matches);
 $controller = new $controllerName();
 $controller->$actionName(...$matches);
+var_dump($actionName);
+
